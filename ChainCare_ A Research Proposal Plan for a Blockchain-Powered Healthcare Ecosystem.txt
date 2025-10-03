@@ -1,0 +1,648 @@
+ChainCare: A Blockchain-Based Platform for Secure Healthcare Data Management and
+Automated Insurance Claims in Low-Resource Settings
+
+BSc. in Software Engineering
+Kingdavid Chukwumere
+Supervisor: Dr. Aaron A. Izang
+
+Abstract
+
+The persistent challenges of fragmented data, administrative inefficiency, and high transaction
+costs in healthcare, particularly within low- and middle-income countries (LMICs), lead to
+significant service delivery gaps and preventable mortality (LifeLine, 2025; Techscience, 2023;
+Ernst & Young, 2025). This research proposes "ChainCare," a blockchain-powered platform
+designed to serve as a public health intervention. The project will design, implement, and
+evaluate a prototype that integrates three core functions: secure clinical and pharmaceutical data
+management, automated on-chain insurance claims processing, and efficient payments using
+stablecoins. Leveraging a permissioned blockchain framework like Hyperledger Fabric
+(ResearchGate, 2023; Hyperledger, 2018), the system aims to create a secure, interoperable, and
+trust-minimized ecosystem. The methodology is grounded in a Design Science Research (DSR)
+approach, focusing on the creation and rigorous evaluation of a testable artifact (Hevner et al.,
+2004; Lazaar, 2024). By demonstrating the technical feasibility, economic efficiency, and
+socio-technical acceptance of this prototype, the project seeks to generate new knowledge and
+provide a scalable blueprint for strengthening healthcare infrastructure and improving patient
+outcomes in resource-constrained environments (LifeLine, 2025; Hevner et al., 2004; Maze,
+n.d.).
+
+ChainCare: A Research Proposal Plan for a Blockchain-Powered Healthcare Ecosystem. 1
+Abstract..............................................................................................................................2
+CHAPTER ONE: INTRODUCTION......................................................................................... 4
+1.1 Introduction and Background....................................................................................... 4
+1.2 Problem Statement...................................................................................................... 5
+1.3 Research Objectives....................................................................................................6
+1.4 Research Questions.................................................................................................... 7
+1.5 Project Scope...............................................................................................................8
+1.6 Significance and Justification.......................................................................................8
+CHAPTER TWO: LITERATURE REVIEW............................................................................... 9
+2.1 Introduction.................................................................................................................. 9
+2.2 Theoretical and Historical Context............................................................................... 9
+2.3 Overview of Existing Solutions & 2.4 Review of Related Work..................................10
+2.5 Strengths and Weaknesses of the Existing Systems.................................................13
+2.6 General Commentary and Conclusion.......................................................................15
+CHAPTER THREE: SYSTEM ANALYSIS AND DESIGN...................................................... 16
+3.1 Introduction................................................................................................................ 16
+3.2 Research Design and Methodology...........................................................................17
+3.3 Functional and Non-functional Requirements............................................................17
+3.3.1 Functional Requirements.................................................................................. 18
+3.3.2 Non-functional Requirements........................................................................... 18
+3.4 System Architecture...................................................................................................18
+3.5 UML Diagrams........................................................................................................... 19
+3.6 Development Tools and Technologies....................................................................... 22
+Works cited................................................................................................................ 24
+
+CHAPTER ONE: INTRODUCTION
+
+1.1 Introduction and Background
+Healthcare systems globally face profound challenges, but these are particularly pronounced in
+low- and middle-income countries (LMICs), where data fragmentation, administrative
+inefficiency, and a lack of trust contribute to critical service delivery gaps. The stark reality is
+that logistical and administrative delays can be as fatal as the diseases they seek to treat. For
+instance, an alarming statistic indicates that an estimated 1.6 million lives were lost in Africa in
+2020, not primarily from the disease itself, but from the systemic failures that cause delays in
+accessing emergency medications and proper treatment (African Development Bank Group &
+World Health Organization, 2020). This points to a deeper, underlying public health crisis that is
+intrinsically linked to socio-economic and technological infrastructure.
+At the core of this issue are siloed and inefficient information systems. In many settings, patient
+records are decentralized, fragmented, and difficult to share securely among different providers,
+compromising data integrity and care coordination (Techscience, 2023). Simultaneously, the
+processes for health insurance claims and payments remain mired in administrative friction,
+making it difficult for patients to utilize their benefits seamlessly (LifeLine, 2025). This creates a
+vicious cycle where a patient's inability to use their insurance remotely is a direct consequence of
+a disconnected system where financial and clinical data are not interoperable. The result is a
+fundamental deficit of trust, as patients cannot be confident their insurance will cover their care,
+and providers lack a transparent, real-time mechanism to verify claims and receive payments.
+The emergence of blockchain technology offers a novel and potentially transformative paradigm
+to address these systemic failures. Blockchain, a decentralized and distributed ledger technology,
+possesses core attributes—immutability, transparency, and cryptography—that could provide the
+secure and interconnected infrastructure currently missing from many healthcare systems
+(International Journal of Advanced Networking and Applications, 2023; Techscience, 2023;
+International Journal of Advanced Networking and Applications, 2023). This research proposes
+"ChainCare," a new project that will design, implement, and evaluate a blockchain-powered
+ecosystem. The system is designed as a public health intervention, not merely a technological
+upgrade, focusing on three interconnected pillars: secure clinical and pharmaceutical data
+management, automated on-chain insurance claims processing, and efficient payments with
+stablecoins. By integrating these functions on a single, shared ledger, ChainCare aims to
+establish a unified, trust-minimized platform that could fundamentally reshape how health data
+and finances are managed, thereby reducing delays and improving access to care across the
+continent.
+
+1.2 Problem Statement
+Despite technological advancements, the current healthcare landscape in many LMICs remains
+hampered by a trifecta of interconnected problems: fragmented data, administrative inefficiency,
+and high transaction costs. Patient records are often scattered across disparate databases, or even
+paper files, leading to a lack of interoperability that can compromise care and introduce
+significant risks, such as misdiagnosis or duplicate testing (Techscience, 2023). This
+fragmentation extends to the pharmaceutical supply chain, where a lack of end-to-end
+traceability contributes to the proliferation of counterfeit medicines and stock-outs (Healthtech
+Africa, n.d.).
+The administrative burden is particularly evident in the insurance sector. The process of filing
+and settling health insurance claims is notoriously slow and manual, requiring extensive
+paperwork and multiple points of verification. This inefficiency is a significant barrier to care,
+and it creates an environment ripe for fraud, which costs the industry billions annually
+(Appinventiv, n.d.). A qualitative analysis of patient experience, as articulated in the provided
+research, reveals a powerful user-centric problem: individuals who can afford insurance often
+complain about the difficulty of utilizing it remotely, expressing a desire for a system that
+functions as seamlessly as "switching debit/credit cards on Amazon" (LifeLine, 2025). This
+points to a profound need for frictionless interoperability across both the clinical and financial
+layers of the healthcare ecosystem.
+Furthermore, traditional financial systems are ill-suited for the modern digital economy. High
+transaction fees, slow settlement times, and a lack of 24/7 liquidity, particularly for cross-border
+payments, represent a persistent challenge for providers and patients alike (Ernst & Young,
+2025). While the digital health landscape in Africa has seen a proliferation of solutions, the
+market is characterized by functional fragmentation. Existing platforms such as mPharma focus
+on supply chain logistics (mPharma, n.d.), Ilara Health on point-of-care diagnostics (Ilara Health,
+n.d.), and Zuri Health and Babl Telehealth on telemedicine (Zuri Health, n.d.; Babl Telehealth,
+n.d.). These single-purpose solutions, while valuable in their own right, do not address the
+holistic patient journey, which requires seamless coordination across data management,
+diagnostics, logistics, and payments. This fragmented landscape, where each platform addresses
+a narrow pain point in isolation, creates the perfect environment for a unifying, integrated
+solution. The critical research gap is therefore the absence of a single, decentralized, and
+trust-minimized platform that can holistically address these interconnected challenges, which this
+project aims to fill.
+
+1.3 Research Objectives
+1.3.1
+The main objective of this project is to design, develop, and evaluate ChainCare, a decentralized
+blockchain platform that securely manages pharmaceutical and clinical data, automates insurance
+claims through smart contracts, and enables stablecoin-based payments to reduce administrative
+delays, enhance data security, and improve access to healthcare services in low-resource
+environments.
+1.3.2 Specific Objective
+1. Design a Permissioned Blockchain Architecture: Create and configure a Hyperledger
+Fabric–based permissioned blockchain network to securely store and manage clinical and
+pharmaceutical data while preserving privacy and ensuring scalability.
+2. Develop Smart Contracts for Claims Automation: Implement chaincode that validates and
+processes health insurance claims based on verifiable conditions, aiming to reduce manual
+intervention and claim settlement delays.
+3. Integrate Blockchain-Based Payment System: Build a stablecoin-enabled payment module to
+facilitate fast and cost-effective claim payouts and patient payments, and compare its
+performance against traditional payment methods.
+4. Evaluate System Performance and Usability: Conduct rigorous testing to measure the system’s
+scalability, security, and user acceptance, using performance metrics and feedback from
+stakeholders to validate its effectiveness.
+
+1.4 Research Questions
+1. How can a permissioned blockchain architecture be designed and configured to securely
+manage pharmaceutical and clinical data while ensuring privacy and scalability in low-resource
+settings?
+2. To what extent can smart contracts automate health insurance claim validation and settlement,
+and how much can they reduce administrative delays compared to traditional manual processes?
+3. What is the efficiency, cost-effectiveness, and transaction speed of a stablecoin-based payment
+system for processing claims payouts and patient payments compared to conventional financial
+
+rails?
+4. How usable and acceptable is the ChainCare platform among key stakeholders (patients,
+insurers, and healthcare providers), and what is its impact on data security, access to care, and
+overall healthcare delivery efficiency?
+
+1.5 Project Scope
+In accordance with the principles of Design Science Research (DSR), this project will focus on
+the creation and evaluation of a proof-of-concept prototype of the "ChainCare" system (Lazaar,
+2024; Wikipedia, n.d.). This scope is intentionally constrained to ensure that the outcomes are
+measurable, realistic, and replicable for future research. The project will not involve a full-scale
+commercial launch or integration with live patient data due to the significant ethical, regulatory,
+and logistical complexities inherent in such an undertaking. The research artifact will include:
+The system architecture is based on a three-tier design, leveraging a permissioned blockchain
+network to ensure security and privacy. At its core is a Hyperledger Fabric network, configured
+with a specific number of peers. These peers represent the key stakeholders in the healthcare
+ecosystem, such as hospitals, insurance providers, and pharmacies, allowing for a secure and
+decentralized flow of information. The network is governed by smart contracts, known as
+chaincode, which are the cornerstone of the system's logic. These smart contracts are
+programmed to automate crucial processes like claims processing and to enforce strict, granular
+data access control. This automation ensures that transactions are self-executing and
+tamper-proof. The architecture is completed by a user-facing web dashboard and a simulated
+patient interface. The dashboard provides a visual platform for network participants to interact
+with the system, track claims, and manage data. The patient interface, meanwhile, simulates
+real-world data input, allowing for a realistic demonstration and evaluation of the system’s
+functionality and privacy mechanisms.
+The evaluation will be conducted using a clinically informed, synthetically generated dataset, a
+methodology validated in other research projects to enable robust testing in the absence of
+real-world patient data (LifeLine, 2025). The prototype's functional and non-functional
+requirements, including its performance, security, and usability, will be tested through a
+mixed-methods approach that includes performance benchmarking and structured user surveys.
+This targeted scope ensures the project remains within a manageable timeframe and provides a
+scalable, academic blueprint for future expansion and commercialization.
+
+1.6 Significance and Justification
+The successful execution of this project will contribute to both academic and practical domains.
+Academically, this research will produce a new artifact, a verifiable, trust-minimized,
+multi-stakeholder healthcare platform and generate new, prescriptive knowledge about the
+application of blockchain in healthcare. It will serve as a valuable case study for addressing
+critical challenges of scalability, privacy, and regulatory compliance in a permissioned network
+setting, which is a key area of ongoing research (Simbo AI, n.d.). The evaluation of this artifact
+will provide empirical evidence that can be used to refine and enhance future research in this
+field.
+Practically, the project is justified by its potential to serve as a foundational blueprint for solving
+critical public health and economic challenges. The proposed solution directly addresses the
+systemic issues that contribute to delayed care, such as fragmented patient records and inefficient
+administrative processes, which can have life-threatening consequences (African Development
+Bank Group & World Health Organization, 2020; LifeLine, 2025). The project's design is
+tailored to the realities of a fragmented digital health ecosystem by creating a unifying platform
+rather than another siloed solution (Healthtech Africa, n.d.). The research will demonstrate how a
+combination of a robust, technical solution and human-centered design can be a powerful tool for
+strengthening healthcare infrastructure across Africa and other resource-constrained
+environments.
+
+1.8 Research Budget
+
+Item
+
+Cost (USD)
+
+Justification
+
+Internet
+
+20
+
+Access to online journals, datasets
+
+Data storage & security tools
+
+35
+
+Secure storage of clinical datasets
+
+Gas fees
+
+20
+
+Etherium
+
+Electricity
+
+15
+
+Power for laptop use during
+development
+
+25
+
+Journal subscriptions
+available via ALU
+
+Documentation and Reporting
+
+30
+
+Printing, formatting, publishing,
+visuals
+
+Contingency
+
+30
+
+Miscellaneous
+
+Total
+
+$225
+
+Academic
+(one-time)
+
+journal
+
+access
+
+1.9 Research Timeline
+
+CHAPTER TWO: LITERATURE REVIEW
+
+are
+
+not
+
+2.1 Introduction
+This chapter presents a critical review of the existing scholarly and industry literature relevant to
+the proposed "ChainCare" project. The purpose of this review is to establish the intellectual
+foundation for the research, position the project within the current body of knowledge, and
+identify the specific, unaddressed research gap that this work aims to fill. The review will
+proceed thematically, synthesizing existing knowledge on blockchain in healthcare, insurance
+claims processing, and financial transactions. This structured approach, a cornerstone of
+academic rigor, will ensure the project's contribution is well-defined and its methodology is
+grounded in a deep understanding of the field (LifeLine, 2025; Metana, n.d.).
+
+2.2 Theoretical and Historical Context
+The management of healthcare data has evolved from fragmented, paper-based records to
+centralized electronic medical records (EMRs). While EMRs have improved data accessibility,
+they have also created new challenges. Centralized databases are susceptible to single points of
+failure, cyber-attacks, and a lack of interoperability, which makes it difficult to share patient data
+across different hospital networks or even within the same health system (Techscience, 2023). In
+parallel, traditional financial systems, which rely on trusted intermediaries, are burdened by high
+costs and slow settlement times, particularly for cross-border transactions (Ernst & Young,
+2025).
+Blockchain technology was initially developed as a foundation for digital currencies like Bitcoin
+but has since been recognized for its potential to solve a broader range of problems. At its core, a
+blockchain is a decentralized and distributed ledger system that uses cryptography to ensure data
+immutability and transparency. Data, once added to a block and verified by the network, cannot
+be altered or deleted, creating an immutable audit trail (International Journal of Advanced
+Networking and Applications, 2023; Metana, n.d.). For the healthcare sector, this immutability
+and decentralization could provide a secure infrastructure for managing patient records and
+tracking data across a network of stakeholders (International Journal of Advanced Networking
+and Applications, 2023; Builtin, n.d.).
+A key distinction must be made between public (permissionless) and permissioned blockchains.
+Public blockchains, like Ethereum, are open to anyone to join and participate, which can raise
+concerns about data privacy and scalability for enterprise-level applications. In contrast,
+permissioned blockchains, such as Hyperledger Fabric, restrict network participation to a
+pre-authorized group of known organizations. This controlled environment, with its emphasis on
+identity and privacy, makes it a more suitable framework for a highly regulated industry like
+
+healthcare (ResearchGate, 2023). A parallel technology, stablecoins, mitigates the price volatility
+of cryptocurrencies by pegging their value to a stable asset, such as a fiat currency. This stability
+makes stablecoins a viable medium of exchange for financial transactions, including those in a
+healthcare context (Ernst & Young, 2025).
+
+2.3 Overview of Existing Solutions & 2.4 Review of Related Work
+The digital health market in sub-Saharan Africa is a dynamic but functionally fragmented
+ecosystem, with numerous platforms addressing specific pain points but failing to provide a
+comprehensive, integrated solution. For instance, platforms like mPharma focus on
+pharmaceutical supply chain logistics and inventory management using a centralized, data-driven
+approach, but they lack blockchain integration, on-chain patient data, and insurance features
+(mPharma, n.d.). Similarly, Ilara Health concentrates on point-of-care diagnostics and a clinic
+operating system, but its scope is limited, with micro-insurance being a future pilot rather than a
+core feature (Ilara Health, n.d.). Telemedicine platforms such as Zuri Health and Babl Telehealth,
+which offer services like mobile or SMS-based doctor chats and video consultations, are also
+prevalent (Zuri Health, n.d.; Babl Telehealth, n.d.). However, these centralized, mobile-first
+solutions lack key integrations like on-chain data management, pharmacy/test integration,
+automated insurance claims, and payment systems, leaving a critical gap in the holistic patient
+journey (Zuri Health, n.d.; Babl Telehealth, n.d.). These existing single-purpose solutions, while
+valuable in their own right, inadvertently highlight the need for a unifying platform that can
+holistically address the interconnected challenges of data management, logistics, and payments,
+which is the precise research gap ChainCare aims to fill.
+The academic literature on blockchain's applications in healthcare supports the project's
+three-pronged approach.
+Blockchain for Healthcare Data Management: Research indicates that blockchain's decentralized
+and encrypted nature can enhance the security, privacy, and integrity of patient health records
+(Techscience, 2023; Builtin, n.d.). It can also be used to improve the transparency and
+traceability of clinical trials (International Journal of Advanced Networking and Applications,
+2023). Pilot projects are exploring its use in managing patient data and ensuring secure data
+exchange across different systems (Builtin, n.d.).
+Blockchain for Insurance Claims: The use of smart contracts to automate insurance claims is a
+growing area of interest. These self-executing agreements can automatically trigger payouts
+when predefined conditions are met, eliminating the need for manual intervention and reducing
+fraud (Appinventiv, n.d.). The process can be made even more robust through the use of
+
+decentralized oracle networks, which can feed real-world data (such as a confirmed lab result)
+into the smart contract to trigger a claims payout (Appinventiv, n.d.). The literature on
+Hyperledger Fabric's capabilities in this area highlights its suitability for high-volume
+transactions and secure record-keeping (Hyperledger, 2018; SCNsoft, n.d.).
+Stablecoins in Healthcare Payments: Research on stablecoins demonstrates their potential to
+revolutionize financial transactions by offering reduced costs and faster settlement times,
+particularly for cross-border payments (Ernst & Young, 2025). One case study highlighted a
+company's use of a blockchain ledger to simplify payments and cut costs, showing the practical
+viability of this approach in the healthcare sector (Ernst & Young, 2025).
+The explicit mention of Hyperledger Fabric in the provided research, coupled with the extensive
+literature on its capabilities, confirms that this research is not based on a generic idea but on a
+specific, well-justified technological choice. The literature provides the rationale for this choice:
+Fabric's permissioned architecture and features like private data collections are ideal for an
+industry that requires a balance of transparency and strict privacy, with a proven capacity for
+high transaction throughput (ResearchGate, 2023; Techscience, 2023; Hyperledger, 2018).
+
+2.5 Strengths and Weaknesses of the Existing Systems
+Existing centralized digital health platforms in Africa offer a number of benefits, including
+user-friendly interfaces, accessibility via mobile devices, and a focus on specific, solvable
+problems. However, their centralized nature introduces systemic weaknesses, including single
+points of failure, a lack of interoperability, and the inability to establish a trust-minimized
+relationship between multiple, competing organizations.
+While blockchain technology holds immense promise, its implementation is not without its own
+set of significant challenges. These challenges represent the core opportunities for research that
+this project seeks to address. For instance, the issue of scalability is a major hurdle, as public
+blockchains are inherently slow and cannot handle the high transaction volume of a major health
+system, which can lead to delays in critical data access that compromise care (Simbo AI, n.d.).
+ChainCare addresses this by using a permissioned blockchain (Hyperledger Fabric) with a
+reported high throughput of 550 transactions per second and the use of Layer 2 solutions that
+process large datasets off-chain, storing only a cryptographic hash on the main ledger (Simbo AI,
+n.d.; Hyperledger, 2018). Similarly, the core immutability of blockchain technology can
+contradict privacy regulations that grant individuals the right to have their data modified or
+deleted (Simbo AI, n.d.). This creates significant legal and ethical hurdles. The project's
+proposed solution leverages Hyperledger Fabric's private data collections, which store sensitive
+
+data only with authorized parties while a hashed record is kept on the public ledger, providing a
+verifiable, immutable audit trail without exposing sensitive information (Techscience, 2023).
+Another challenge is regulatory uncertainty, as the legal and policy frameworks for blockchain in
+healthcare are nascent or non-existent in many African countries (Healthtech Africa, n.d.). This
+uncertainty slows innovation and creates legal risk for institutions. The research will serve as a
+pilot model and provide a foundation for evidence-based policy recommendations by leveraging
+the compliance-friendly features of the chosen technology, demonstrating a functional path
+forward for regulators. Finally, there is often a disconnection between blockchain platforms and
+existing legacy systems, such as Electronic Health Records (EHRs), which limits data sharing
+and makes system integration costly and complex (Simbo AI, n.d.). ChainCare’s design, with a
+robust Application Programming Interface (API) layer and a modular architecture, is intended to
+facilitate seamless integration with existing hospital and provider systems. The literature
+demonstrates that these problems of scalability and privacy are not isolated; they form a
+complex, interconnected problem space, and the holistic, integrated solution proposed by
+ChainCare is a necessary and novel line of inquiry.
+
+2.6 General Commentary and Conclusion
+In conclusion, the literature review confirms that a critical, multi-faceted research gap persists in
+the digital health ecosystem of sub-Saharan Africa. While the market is saturated with
+fragmented, single-purpose, and centralized platforms that address narrow problems in isolation,
+none of them solve the overarching issues of data fragmentation, trust, and administrative
+friction in a holistic manner. These single-purpose solutions, while a testament to the continent's
+growing innovation, have by their nature created a new, systemic problem: the lack of a unifying
+platform.
+The "ChainCare" project, by its design, is uniquely positioned to fill this gap. By leveraging a
+permissioned blockchain framework like Hyperledger Fabric, the research will not only create a
+valuable and testable artifact but will also generate new knowledge about how to overcome the
+technical and regulatory challenges inherent in applying this technology to a sensitive domain.
+The project's success would provide a scalable blueprint for a more efficient, secure, and
+accessible healthcare system, benefiting both the academic community and the populations it
+aims to serve.
+
+CHAPTER THREE: SYSTEM ANALYSIS AND DESIGN
+
+3.1 Introduction
+This chapter outlines the research design and methodology for the "ChainCare" project, serving
+as a critical bridge from the foundational theoretical work of the previous chapters to the
+practical implementation plan. In full alignment with the principles of Design Science Research
+(DSR), this phase is dedicated to the systematic creation and rigorous evaluation of a novel and
+valuable technological artifact (Hevner et al., 2004; Lazaar, 2024; Wikipedia, n.d.). The
+overarching objective is to produce a functional prototype that can serve as a proof-of-concept,
+enabling empirical testing and the generation of new, prescriptive knowledge to address the
+systemic problems identified in Chapters One and Two. The methodology will be a hybrid
+approach, combining the structured, iterative nature of DSR with a mixed-methods evaluation
+strategy to assess both the system's technical performance and its ultimate user acceptance and
+feasibility in a real-world context (Maze, n.d.; Cooper & Foster, 1971).
+
+3.2 Research Design and Methodology
+This research will be conducted using a Design Science Research (DSR) approach, an iterative
+and problem-solving methodology that is well-suited for developing innovative solutions in
+software engineering and information systems (Hevner et al., 2004; Lazaar, 2024; LifeLine,
+2025). The DSR cycle for this project will include the following phases:
+Problem Identification: As established in Chapter One, the core problem is the fragmented and
+inefficient healthcare ecosystem in LMICs, leading to administrative friction, data insecurity, and
+delays in care.
+Solution Design: The design objectives, derived directly from the problem statement, are to
+create a blockchain-powered ecosystem that enables secure data management, automated claims,
+and efficient payments.
+Artifact Development: This phase involves the creation of the "ChainCare" prototype, which will
+be a functional and testable artifact. The prototype will be a specific instantiation of the proposed
+solution, a core component of DSR (Lazaar, 2024).
+Evaluation: The prototype's utility and effectiveness will be rigorously evaluated against the
+research objectives. The evaluation will use a mixed-methods approach to assess both
+quantitative metrics (e.g., transaction speed, scalability) and qualitative aspects (e.g., user
+experience and trustworthiness), which is a common practice in software engineering research to
+gain a comprehensive understanding of the system's performance and impact (Maze, n.d.;
+
+LifeLine, 2025).
+
+3.3 Functional and Non-functional Requirements
+The development of the "ChainCare" prototype will be guided by a clear set of functional and
+non-functional requirements to ensure the solution is both effective and appropriate for the target
+environment.
+
+3.3.1 Functional Requirements
+1.​ Secure Data Management: The system shall enable the secure storage and exchange of
+clinical and pharmaceutical data for patients, providers, and pharmacies on a shared,
+immutable ledger (Techscience, 2023; LifeLine, 2025).
+2.​ Insurance Claims Automation: The system shall use smart contracts to automatically
+validate and process health insurance claims based on predefined, verifiable conditions,
+reducing manual processing time and administrative costs (Appinventiv, n.d.; LifeLine,
+2025).
+3.​ Stablecoin Payments: The system shall support payments for services and claim payouts
+using a stablecoin-based payment rail (LifeLine, 2025).
+4.​ Data Access Control: The system shall provide granular, cryptographically-secured
+access control, ensuring that only authorized individuals and organizations can view or
+modify specific patient data (International Journal of Advanced Networking and
+Applications, 2023; Builtin, n.d.).
+
+3.3.2 Non-functional Requirements
+Scalability: The system shall be able to handle a high volume of transactions with minimal
+latency, addressing the scalability issues of public blockchains. The Hyperledger Fabric
+framework, with its reported throughput of up to 550 transactions per second, is chosen
+specifically to meet this requirement (Simbo AI, n.d.; Hyperledger, 2018).
+Privacy and Compliance: The system shall adhere to stringent data privacy regulations by using
+private data collections, which store sensitive data off-chain while a verifiable hash remains on
+the public ledger. This design ensures that a patient's sensitive information is only accessible to
+authorized parties while maintaining data integrity and compliance (ResearchGate, 2023; Simbo
+AI, n.d.; Techscience, 2023).
+Interoperability: The system shall be designed with a robust Application Programming Interface
+(API) layer to facilitate seamless integration with existing legacy systems, such as Electronic
+
+Health Records (EHRs) and pharmacy management platforms (Simbo AI, n.d.).
+Usability: The system's user interface shall be intuitive and accessible to a diverse range of users,
+including clinicians, patients, and insurance administrators, to promote adoption and trust
+(LifeLine, 2025).
+
+3.4 System Architecture
+The "ChainCare" platform will be built upon a three-layer architecture to ensure a clear
+separation of concerns, modularity, and scalability. This is a standard architectural approach in
+enterprise software and aligns with the structure of the provided proposal templates (LifeLine,
+2025).
+Application Layer: This is the front-end layer that users interact with. It will consist of web and
+mobile dashboards for patients, healthcare providers, and insurers. This layer will provide a
+user-friendly interface for tasks such as requesting services, viewing records, and monitoring
+claims status. The interfaces will communicate with the logic layer through a set of secure APIs.
+Logic Layer: This layer contains the core business rules and processes of the system. It will be
+implemented through Hyperledger Fabric smart contracts (chaincode), which will handle the
+automated logic for insurance claims processing, data access permissions, and payment
+transactions. This layer is responsible for executing the pre-defined agreements and ensuring all
+on-chain actions are valid.
+Data Layer: This is the foundational layer of the system. It consists of the Hyperledger Fabric
+blockchain network itself, which serves as a decentralized and immutable ledger. It will store
+transactional hashes and metadata publicly, while sensitive patient data will be stored in private
+data collections that are only accessible to authorized parties. The off-chain data storage will be
+managed by a separate, secure database that is linked to the blockchain via cryptographic hashes.
+
+3.5 UML Diagrams
+
+To clearly document the design and functionality of the "ChainCare" system, the following
+Unified Modeling Language (UML) diagrams will be developed as part of the system design
+phase:
+●​
+
+Use Case Diagram:
+
+●​
+
+Entity-Relationship Diagram (ERD):
+
+●​
+
+Class Diagram:
+
+3.6 Development Tools and Technologies
+
+The "ChainCare" project will utilize a technology stack that is robust, scalable, and well-suited
+for a permissioned blockchain environment. The primary development tools and technologies
+will include:
+1.​ Blockchain Framework: Hyperledger Fabric will serve as the core blockchain platform,
+chosen for its permissioned architecture and features like private data collections and high
+
+transaction throughput.
+2.​ Smart Contract Development: Smart contracts, known as chaincode, will be written in a
+language such as Golang or JavaScript, which are supported by the Hyperledger Fabric
+framework.
+3.​ Frontend Development: A web-based dashboard and a simulated patient interface will be
+developed using modern web frameworks such as React or Vue.js, along with a server-side
+framework like Node.js or Python.
+4.​ Database: A relational or non-relational database will be used for off-chain storage of large
+or non-critical data, which will be referenced on the blockchain through cryptographic
+hashes.
+5.​ API Layer: A RESTful API will be built to allow the frontend applications to interact with
+the smart contracts on the blockchain network securely.
+
+Works cited
+1.​ Private data — Hyperledger Fabric Docs main documentation, accessed on September 20,
+2025, https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.htm
+2.​ (PDF) Blockchain Application in Healthcare Data Management - ResearchGate, accessed
+on September 20, 2025, (PDF)  Blockchain Application in Healthcare Data Management
+3.​ How Healthcare Is Applying Blockchain Technology - Investopedia, accessed on
+September 20, 2025, How Healthcare Is Applying Blockchain Technology
+4.​ Stablecoins in focus: navigating the new digital financial landscape - EY, accessed on
+September 20, 2025, Stablecoins in focus: navigating the new digital financial landscape
+5.​ Revolutionizing Healthcare Payments: The Promise of Blockchain - OneSafe Blog,
+accessed on September 20, 2025, Revolutionizing Healthcare Payments: The Promise of
+Blockchain - OneSafe Blog
+6.​ Hyperledger Fabric Blockchain: Secure and Efficient Solution for Electronic Health
+Records, accessed on September 20, 2025, Hyperledger Fabric Blockchain: Secure and
+Efficient Solution for Electronic Health Records
+7.​ Change Healthcare Case Study - LF Decentralized Trust, accessed on September 20, 2025,
+Change Healthcare Case Study
+8.​ A Design Science-Based Evaluation Framework for Patterns - DigitalCommons@UNO,
+accessed on September 20, 2025, A Design Science-Based Evaluation Framework for
+Patterns
+9.​ Design Science Research Methodology | by Yassine Lazaar - Medium, accessed on
+September 20, 2025, Design Science Research Methodology | by Yassine Lazaar | Medium
+10.​Design science (methodology) - Wikipedia, accessed on September 20, 2025, Design
+science (methodology) - Wikipedia
+11.​FEDS: a Framework for Evaluation in Design Science Research - Taylor & Francis
+Online, accessed on September 20, 2025, Full article: FEDS: a Framework for Evaluation
+in Design Science Research
+12.​Blockchain Applications for Healthcare Data Management - PMC - PubMed Central,
+accessed on September 20, 2025, Blockchain Applications for Healthcare Data
+Management - PMC
+13.​Blockchain | Health Tech Africa, accessed on September 20, 2025, Blockchain | Health
+Tech Africa
+14.​8 Blockchain Insurance Examples to Know | Built In, accessed on September 20, 2025, 8
+Blockchain Insurance Examples to Know | Built In
+15.​Blockchain in Insurance: Use Cases, Benefits, Compliances - Appinventiv, accessed on
+September 20, 2025, Blockchain in Insurance: Use Cases, Benefits, Compliances
+16.​mPharma, accessed on September 20, 2025, https://mpharma.com/
+17.​mPharma - British International Investment, accessed on September 20, 2025, mPharma British International Investment
+18.​Ilara Health - Butterfly Network, accessed on September 20, 2025, Ilara Health | Butterfly
+Network
+19.​Innovator Spotlight: ilara Health - Villgro Africa, accessed on September 20, 2025,
+Innovator Spotlight: ilara Health - Villgro Africa
+20.​(PDF) Zuri Health Pan-African Digital Health Innovator (1) - ResearchGate, accessed on
+
+September
+20,
+2025,
+https://www.researchgate.net/publication/394526247_Zuri_Health_Pan-African_Digital_H
+ealth_Innovator_1
+21.​About
+Us
+Baba
+Telehealth,
+accessed
+on September
+20,
+2025,
+https://www.babatelehealth.com/about-us
+22.​Baba Telehealth - Apps on Google Play, accessed on September 20, 2025, Baba Telehealth
+- Apps on Google Play
+23.​The Hyperledger fabric as a Blockchain framework preserves the security of electronic
+health records - ResearchGate, accessed on September 20, 2025, The Hyperledger fabric
+as a Blockchain framework preserves the security of electronic health records
+24.​Addressing the Key Challenges of Implementing Blockchain Technology in Healthcare:
+Scalability and Compliance Issues | Simbo AI - Blogs, accessed on September 20, 2025,
+Addressing the Key Challenges of Implementing Blockchain Technology in Healthcare:
+Scalability and Compliance Issues | Simbo AI - Blogs
+25.​Challenges and Opportunities of Implementing Blockchain Technology in Healthcare:
+Addressing Scalability, Energy Consumption, and Regulatory Issues | Simbo AI - Blogs,
+accessed on September 20, 2025, Challenges and Opportunities of Implementing
+Blockchain Technology in Healthcare: Addressing Scalability, Energy Consumption, and
+Regulatory Issues | Simbo AI - Blogs
+26.​Private data — Hyperledger Fabric Docs main documentation, accessed on September 20,
+2025, Private data — Hyperledger Fabric Docs main documentation
+27.​Mixed Methods Research: How to Combine Data - Maze, accessed on September 20,
+2025, Mixed Methods Research: How to Combine Data | Maze
+28.​Embedding Software Engineering in Mixed Methods Research: Computationally
+Enhanced
+Risk
+Communication,
+accessed
+on
+September
+20,
+2025,
+https://www.cs.montana.edu/izurieta/pubs/IJMRA.pdf
+29.​Policy Brief - Health Tech Africa, accessed on September 20, 2025,
+https://healthtechafrica.org/sites/default/files/resources/PB_Blockchain-FNL_DEC.pdf
+30.​How to Conduct Research on Blockchain - Metana, accessed on September 20, 2025, How
+to Conduct Research on Blockchain - Metana
+31.​Zuri Health 2025 Company Profile: Valuation, Funding & Investors | PitchBook, accessed
+on September 20, 2025, Zuri Health 2025 Company Profile: Valuation, Funding &
+Investors | PitchBook
+32.​Blockchain in Healthcare: 16 Real-World Examples | Built In, accessed on September 20,
+2025, Blockchain in Healthcare: 16 Real-World Examples | Built In
+33.​A systematic review of the blockchain application in healthcare research domain: toward a
+unified conceptual model - PubMed Central, accessed on September 20, 2025, A
+systematic review of the blockchain application in healthcare research domain: toward a
+unified conceptual model
+34.​Smart Contracts in Insurance: A Complete Guide - ScienceSoft, accessed on September
+20, 2025, Smart Contracts in Insurance: A Complete Guide | ScienceSoft
+
+
