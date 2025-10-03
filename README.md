@@ -1,5 +1,11 @@
 # ChainCare Smart Contracts
 
+## 🎥 **DEMO VIDEO**
+### **[Watch the ChainCare Demo Video →](https://youtu.be/qqwbecFv3vw)**
+*See the complete ChainCare blockchain healthcare ecosystem in action!*
+
+---
+
 This repository contains the complete set of smart contracts for the ChainCare blockchain-powered healthcare ecosystem, designed based on the requirements outlined in the ChainCare documentation.
 
 ## Overview
