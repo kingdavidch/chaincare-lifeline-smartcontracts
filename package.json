@@ -1,0 +1,64 @@
+{
+  "name": "chaincare-lifeline-smartcontracts",
+  "version": "1.0.0",
+  "description": "ChainCare: Blockchain-Powered Healthcare Ecosystem Smart Contracts - A comprehensive suite of smart contracts for secure healthcare data management, automated insurance claims processing, and stablecoin-based payments in low-resource settings.",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.js",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network testnet",
+    "verify": "hardhat verify",
+    "coverage": "hardhat coverage",
+    "gas-report": "REPORT_GAS=true hardhat test",
+    "lint": "solhint 'contracts/**/*.sol'",
+    "lint:fix": "solhint 'contracts/**/*.sol' --fix",
+    "prettier": "prettier --write 'contracts/**/*.sol'",
+    "clean": "hardhat clean",
+    "node": "hardhat node"
+  },
+  "keywords": [
+    "blockchain",
+    "healthcare",
+    "smart-contracts",
+    "solidity",
+    "insurance",
+    "medical-records",
+    "supply-chain",
+    "stablecoin",
+    "payments",
+    "hyperledger-fabric",
+    "chaincare",
+    "lifeline"
+  ],
+  "author": "Kingdavid Chukwumere",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kingdavidch/chaincare-lifeline-smartcontracts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kingdavidch/chaincare-lifeline-smartcontracts/issues"
+  },
+  "homepage": "https://github.com/kingdavidch/chaincare-lifeline-smartcontracts#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@openzeppelin/hardhat-upgrades": "^1.28.0",
+    "hardhat": "^2.19.0",
+    "hardhat-gas-reporter": "^1.0.9",
+    "solidity-coverage": "^0.8.5",
+    "solhint": "^4.0.0",
+    "prettier": "^3.0.3",
+    "prettier-plugin-solidity": "^1.2.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0",
+    "@openzeppelin/contracts-upgradeable": "^5.0.0",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
